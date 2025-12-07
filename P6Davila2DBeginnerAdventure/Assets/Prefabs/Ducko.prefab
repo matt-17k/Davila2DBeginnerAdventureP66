@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6376018048349824495}
   - component: {fileID: 2365638269362190603}
   - component: {fileID: 2056892959977172346}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ducko
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,6 +175,10 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     m_Flags: 0
+  speed: 3
+  maxHealth: 5
+  timeInvincible: 2
+  projectilePrefab: {fileID: 0}
 --- !u!61 &2056892959977172346
 BoxCollider2D:
   m_ObjectHideFlags: 0

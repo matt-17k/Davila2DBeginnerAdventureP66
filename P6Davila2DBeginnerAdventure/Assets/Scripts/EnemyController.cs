@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     Animator animator;
     float timer;
     int direction = 1;
+    bool broken = true;
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
@@ -38,8 +39,12 @@ public class EnemyController : MonoBehaviour
     }
 
     // FixedUpdate has the same call rate as the physics system
-    private void FixedUpdate()
+     void FixedUpdate()
     {
+        if (!broken)
+        {
+            return;
+        }
         Vector2 position = rigidbody2d.position;
 
         if (vertical)
@@ -69,5 +74,15 @@ public class EnemyController : MonoBehaviour
             player.ChangeHealth(-1);
         }
     }
+     void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
+    }
 
+    public void Fix()
+    {
+        broken = false;
+        GetComponent<Rigidbody2D>().simulated = false;
+        animator.SetTrigger("Fixed");
+    }
 }
